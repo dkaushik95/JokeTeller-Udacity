@@ -38,9 +38,4 @@ public class JokeProvider {
             is.close();
         }
     }
-
-    public static void main(String[] args) throws IOException,JSONException {
-        JokeProvider jp = new JokeProvider();
-        System.out.println("Joke is :"+ jp.getRandomJoke());
-    }
 }

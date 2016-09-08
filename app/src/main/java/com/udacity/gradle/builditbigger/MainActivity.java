@@ -7,11 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.JokeProvider;
-
-import org.json.JSONException;
-
-import java.io.IOException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -45,9 +40,8 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) throws IOException, JSONException{
-        JokeProvider jp = new JokeProvider();
-        Toast.makeText(this, jp.getRandomJoke(), Toast.LENGTH_SHORT).show();
+    public void tellJoke(View view) {
+        Toast.makeText(this, "DERP2", Toast.LENGTH_SHORT).show();
     }
 
 
