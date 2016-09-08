@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,7 +42,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "DERP2", Toast.LENGTH_SHORT).show();
+        //TODO: Connect the ASYNC task and execute on onclick
+        new EndpointsAsyncTask().execute(this);
+        //Toast.makeText(this, "DERP2", Toast.LENGTH_SHORT).show();
     }
 
 
