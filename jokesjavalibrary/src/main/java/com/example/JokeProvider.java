@@ -15,8 +15,7 @@ public class JokeProvider {
     public String getRandomJoke() throws IOException, JSONException{
         JSONObject json = readJsonFromUrl("http://api.icndb.com/jokes/random");
         JSONObject joke = json.getJSONObject("value");
-        String joke2 = joke.get("joke").toString();
-        return joke2;
+        return joke.get("joke").toString();
     }
     private static String readAll(Reader rd)throws IOException{
         StringBuilder sb = new StringBuilder();
@@ -27,13 +26,12 @@ public class JokeProvider {
         return sb.toString();
     }
 
-    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException{
+    private static JSONObject readJsonFromUrl(String url) throws IOException, JSONException{
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String jsonText = readAll(rd);
-            JSONObject json = new JSONObject(jsonText);
-            return json;
+            return new JSONObject(jsonText);
         } finally {
             is.close();
         }

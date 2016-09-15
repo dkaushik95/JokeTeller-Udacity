@@ -1,13 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Pair;
-import android.widget.Toast;
 
 import com.example.dishantkaushik.myapplication.backend.myApi.MyApi;
-import com.example.joketellingandroidlibrary.Joke;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -15,15 +10,12 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-/**
- * Created by dishantkaushik on 08/09/16.
- */
-class EndpointsAsyncTask extends AsyncTask<Context,Void,String> {
+class EndpointsAsyncTask extends AsyncTask<OnJokeReceivedListener, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private OnJokeReceivedListener listener;
 
     @Override
-    protected String doInBackground(Context...context1) {
+    protected String doInBackground(OnJokeReceivedListener... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -37,25 +29,20 @@ class EndpointsAsyncTask extends AsyncTask<Context,Void,String> {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });
-            // end options for devappserver
-
             myApiService = builder.build();
         }
 
-        context = context1[0];
+        listener = params[0];
+
         try {
             return myApiService.sayJoke().execute().getMyJoke();
         } catch (IOException e) {
-            return e.getMessage();
+            return "There was an error displaying the joke";
         }
     }
 
-
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(context, Joke.class);
-        intent.putExtra("joke", result);
-        context.startActivity(intent);
-        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        listener.onReceived(result);
     }
 }

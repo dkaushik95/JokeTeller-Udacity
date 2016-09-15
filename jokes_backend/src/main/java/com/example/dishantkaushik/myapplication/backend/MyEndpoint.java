@@ -15,7 +15,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-import javax.inject.Named;
 
 /** An endpoint class we are exposing */
 @Api(

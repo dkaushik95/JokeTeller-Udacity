@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FinalProject.iml" filepath="$PROJECT_DIR$/FinalProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JokeTeller-Udacity.iml" filepath="$PROJECT_DIR$/JokeTeller-Udacity.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jokes_backend/jokes_backend.iml" filepath="$PROJECT_DIR$/jokes_backend/jokes_backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/jokesjavalibrary/jokesjavalibrary.iml" filepath="$PROJECT_DIR$/jokesjavalibrary/jokesjavalibrary.iml" />
